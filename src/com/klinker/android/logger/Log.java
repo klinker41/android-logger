@@ -138,7 +138,7 @@ public class Log {
             File logFile = new File(Environment.getExternalStorageDirectory(), PATH);
             if (!logFile.exists())
                 logFile.createNewFile();
-            if (logFile.length > 2097152) { // 2 MB
+            if (logFile.length() > 2097152) { // 2 MB
                 logFile.delete();
                 logFile.createNewFile();
             }
