@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.klnker.android.logger;
+package com.klinker.android.logger;
 
 import android.os.Environment;
 
