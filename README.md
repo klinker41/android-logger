@@ -6,13 +6,13 @@ them.
 
 Usage is simple, just switch your imports from:
 
-```
+```java
 import android.util.Log;
 ```
 
 to 
 
-```
+```java
 import com.klinker.android.Log;
 ```
 
@@ -24,13 +24,13 @@ you.
 
 You can set the path of your log as well with
 
-```
+```java
 Log.setPath("EvolveSMS/log.txt");
 ```
 
 Please note, to use this you will need the following permission in your AndroidManifest.xml
 
-```
+```xml
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
