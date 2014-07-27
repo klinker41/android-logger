@@ -146,7 +146,7 @@ public class Log {
             writer.write(String.format("%1s [%2s]:%3s\r\n", getDateTimeStamp(), tag, message));
             writer.close();
         } catch (IOException e) {
-            android.util.Log.e(TAG, "Unable to log exception to file.");
+            android.util.Log.e(TAG, "Unable to log exception to file.", e);
         }
     }
 }
