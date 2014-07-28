@@ -36,6 +36,14 @@ Please note, to use this you will need the following permission in your AndroidM
 
 And one more thing, the log will be wiped out and rewritten when it gets over 2 MB.
 
+## Gradle
+
+To include this library in your project, include the following in your gradle dependencies
+
+```groovy
+compile 'com.klinkerapps:logger:+'
+```
+
 ## License
 
     Copyright 2013-2014 Jacob Klinker
