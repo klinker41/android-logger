@@ -136,8 +136,10 @@ public class Log {
     private static void logToFile(String tag, String message) {
         try {
             File logFile = new File(Environment.getExternalStorageDirectory(), PATH);
-            if (!logFile.exists())
+            if (!logFile.exists()) {
+                logFile.getParentFile().mkdirs();
                 logFile.createNewFile();
+            }
             if (logFile.length() > 2097152) { // 2 MB
                 logFile.delete();
                 logFile.createNewFile();
