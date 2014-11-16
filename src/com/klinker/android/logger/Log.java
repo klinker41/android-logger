@@ -33,6 +33,7 @@ public class Log {
 
     private static boolean DEBUG = false;
     private static String PATH = "ApplicationLog.txt";
+    private static OnLogListener logListener;
 
     public static void setDebug(boolean debug) {
         DEBUG = debug;
@@ -46,6 +47,10 @@ public class Log {
         } else {
             PATH = path;
         }
+    }
+
+    public static void setLogListener(OnLogListener listener) {
+        logListener = listener;
     }
 
     public static void e(String tag, String message) {
@@ -147,6 +152,10 @@ public class Log {
             BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true));
             writer.write(String.format("%1s [%2s]:%3s\r\n", getDateTimeStamp(), tag, message));
             writer.close();
+
+            if (logListener != null) {
+                logListener.onLogged(tag, message);
+            }
         } catch (IOException e) {
             android.util.Log.e(TAG, "Unable to log exception to file.", e);
         }
