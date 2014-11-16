@@ -13,7 +13,7 @@ import android.util.Log;
 to 
 
 ```java
-import com.klinker.android.Log;
+import com.klinker.android.logger.Log;
 ```
 
 For any of the logging to take place, you need to call Log.setDebug(true). I would not suggest
