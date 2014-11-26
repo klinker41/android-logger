@@ -29,14 +29,21 @@ import java.util.Locale;
 
 public class Log {
 
+    public static final int VERBOSE = 2;
+    public static final int DEBUG = 3;
+    public static final int INFO = 4;
+    public static final int WARN = 5;
+    public static final int ERROR = 6;
+    public static final int ASSERT = 7;
+
     private static final String TAG = "Log";
 
-    private static boolean DEBUG = false;
+    private static boolean DEBUG_ENABLED = false;
     private static String PATH = "ApplicationLog.txt";
     private static OnLogListener logListener;
 
     public static void setDebug(boolean debug) {
-        DEBUG = debug;
+        DEBUG_ENABLED = debug;
     }
 
     public static void setPath(String path) {
@@ -54,7 +61,7 @@ public class Log {
     }
 
     public static void e(String tag, String message) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.e(tag, message);
             if (logResult > 0)
                 logToFile(tag, message);
@@ -62,7 +69,7 @@ public class Log {
     }
 
     public static void e(String tag, String message, Throwable error) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.e(tag, message, error);
             if (logResult > 0)
                 logToFile(tag, message + "\r\n" + android.util.Log.getStackTraceString(error));
@@ -70,7 +77,7 @@ public class Log {
     }
 
     public static void v(String tag, String message) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.v(tag, message);
             if (logResult > 0)
                 logToFile(tag, message);
@@ -78,7 +85,7 @@ public class Log {
     }
 
     public static void v(String tag, String message, Throwable error) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.v(tag, message, error);
             if (logResult > 0)
                 logToFile(tag, message + "\r\n" + android.util.Log.getStackTraceString(error));
@@ -86,7 +93,7 @@ public class Log {
     }
 
     public static void d(String tag, String message) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.d(tag, message);
             if (logResult > 0)
                 logToFile(tag, message);
@@ -94,7 +101,7 @@ public class Log {
     }
 
     public static void d(String tag, String message, Throwable error) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.d(tag, message, error);
             if (logResult > 0)
                 logToFile(tag, message + "\r\n" + android.util.Log.getStackTraceString(error));
@@ -102,7 +109,7 @@ public class Log {
     }
 
     public static void i(String tag, String message) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.i(tag, message);
             if (logResult > 0)
                 logToFile(tag, message);
@@ -110,7 +117,7 @@ public class Log {
     }
 
     public static void i(String tag, String message, Throwable error) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.i(tag, message, error);
             if (logResult > 0)
                 logToFile(tag, message + "\r\n" + android.util.Log.getStackTraceString(error));
@@ -118,7 +125,7 @@ public class Log {
     }
 
     public static void w(String tag, String message) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.w(tag, message);
             if (logResult > 0)
                 logToFile(tag, message);
@@ -126,11 +133,15 @@ public class Log {
     }
 
     public static void w(String tag, String message, Throwable error) {
-        if (DEBUG) {
+        if (DEBUG_ENABLED) {
             int logResult = android.util.Log.w(tag, message, error);
             if (logResult > 0)
                 logToFile(tag, message + "\r\n" + android.util.Log.getStackTraceString(error));
         }
+    }
+
+    public static boolean isLoggable(String string, int num) {
+        return true;
     }
 
     private static String getDateTimeStamp() {
